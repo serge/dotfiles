@@ -1,0 +1,54 @@
+ALIAS_DIR=`(dirname $_)`
+# navigation
+alias 'cd=pushd'
+alias '..=cd ..'
+alias '...=cd ../..'
+# listing
+alias 'ls=ls --color=always'
+alias 'll=ls -lh'
+alias 'l=ls -la'
+alias 'la=l'
+# clipboard
+alias pbpaste='xclip -selection clipboard -o'
+alias pbcopy='xclip -selection clipboard'
+# vim
+alias g='uvim'
+# times
+alias kievtime='TZ=/usr/share/zoneinfo/Europe/Kiev date'
+alias paristime='TZ=/usr/share/zoneinfo/Europe/Paris date'
+alias londontime='TZ=/usr/share/zoneinfo/Europe/London date'
+alias meltime='TZ=/usr/share/zoneinfo/Australia/Melbourne date'
+alias bangtime='TZ=/usr/share/zoneinfo/Asia/Bangkok date'
+# wordreference
+alias wrfr='query.py -tfr -fen '
+alias wres='query.py -tes -fen '
+# misc
+alias movetokindle='mv *.mobi /media/Kindle/documents'
+alias showosver='notify-send "`uname -onr`" -i linux'
+alias tcpread='tshark -n -r '
+alias dfh='df -h'
+alias d='dirs -p -v'
+alias wcl='wc -l'
+alias newsbeuter='newsbeuter -q'
+alias mutt='mutt -F $HOME/.config/mutt/muttrc'
+alias mplayernc='mplayer -noconfig user'
+alias vlc='vlc --qt-minimal-view'
+alias avenv='source $HOME/.cache/venv/bin/activate'
+alias tmux='tmux -f $HOME/.config/tmux/tmux.conf'
+alias calcurse='calcurse -D /home/sergiy/.config/calcurse'
+
+source "$ALIAS_DIR/git"
+source "$ALIAS_DIR/pacman"
+
+alias no_comments="grep -Ev -e '^#' -e '^\W*$'"
+alias rtv='BROWSER=pfire MAILCAPS=/home/sergiy/.config/rtv/mailcap rtv'
+alias showosver='notify-send "`uname -onr`" -i linux'
+alias sshosdev='ssh 127.0.0.3'
+alias tcpnetstat='netstat -tulpn'
+alias tcpread='tshark -n -r '
+alias update_and_poweroff='pacupg --noconfirm && poweroff'
+alias wget='wget --hsts-file=/home/sergiy/.cache/wget-hsts'
+alias wres='query.py -tes -fen '
+alias wrfr='query.py -tfr -fen '
+alias qfont="fc-list | awk -F: '{printf \"%40s %40s\n\", \$2, \$3}' | grep -i " 
+alias reloadfonts='fc-cache -f -v'

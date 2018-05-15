@@ -1,0 +1,9 @@
+# pacman aliases
+
+alias pacin='sudo pacman -S'
+alias pacclean='sudo pacman -Sc --noconfirm'
+alias pacupg='sudo pacman -Syu'
+alias paclsorphans='sudo pacman -Qdt'
+alias pacloc='pacman -Qi'
+alias pacpls='pacman -Ql'
+alias pacrem='sudo pacman -Rns'

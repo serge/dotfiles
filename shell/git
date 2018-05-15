@@ -1,0 +1,38 @@
+
+alias ga='git add'
+alias gaa='ga --all'
+
+alias gb='git branch'
+alias gba='gb -a'
+alias gbr='gb -r'
+
+alias gc='git commit -v'
+alias gc!='gc --amend'
+alias gca='gc -a'
+alias gca!='gca --amend'
+
+alias gclist='git config --list'
+alias gclean='git clean -fd'
+alias gco='git checkout'
+
+alias gd='git diff'
+alias gdca='gd --cached'
+alias gfa='git fetch --all --prune'
+alias gss='git status'
+alias gst='gss -s'
+
+alias glg='git log --stat --max-count = 10'
+alias glo='git log --oneline --decorate --color'
+alias glog='glo --graph'
+
+alias gsta='git stash save'
+alias gstaa='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash show --text'
+
+alias gls='git log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate'
+alias gls='git log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat'
+
+alias gcl='git clone'
