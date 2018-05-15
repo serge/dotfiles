@@ -1,4 +1,4 @@
-ALIAS_DIR=`(dirname $_)`
+ALIAS_DIR=`dirname $_`
 # navigation
 alias 'cd=pushd'
 alias '..=cd ..'
