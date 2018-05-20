@@ -72,14 +72,10 @@ set nobackup
 set nowb
 set noswapfile
 
-
-filetype off
-" execute pathogen#infect()
 filetype plugin indent on
 
 " tags search order
 set tags=./tags;,tags;
-" filetype
 
 " Format the status line
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
@@ -170,8 +166,3 @@ let g:syntastic_check_on_wq = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let python_highlight_all=1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" markdown
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vim_markdown_folding_disabled = 1
-set nofoldenable
