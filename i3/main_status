@@ -1,0 +1,53 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+
+conky.config = {
+	out_to_x = false,
+    own_window = false,
+    out_to_console = true,
+    background = false,
+    max_text_width = 0,
+    update_interval = 2.0,
+    total_run_times = 0,
+    short_units = true,
+    use_spacer = 'left',
+    override_utf8_locale = false,
+	current_mail_spool = "/home/sergiy/.mail/gmail/INBOX/",
+	update_interval = 1.0,
+	template0 = [[\1%\ ]]
+}
+
+---------------------------------------------------------------
+-- swap info
+-- ${if_match $swapperc > 0}
+-- {"full_text": "${swapbar} $swap", "color":"\#800080"},
+-- $endif
+-- wiri info
+-- {"full_text": "${wireless_link_qual_perc wlp3s0}% IP ${addr wlp3s0}", "color":"\#44cc44"},
+---------------------------------------------------------------
+
+conky.text = [[
+[{"full_text":"$mem ${membar 4}", 
+	"color":${if_match $memperc >80} "\#ff0000" $else "\#00ff00" $endif
+},
+{"full_text":"${fs_free /home}"},{"full_text":"${fs_free /} ", "color":"\#ffffff"},
+{"full_text":" ${addr wlp3s0}", "color":"\#44cc44"},
+{"full_text": "GPU ${execi 60 gputemp}°C", "color":"\#8b008b"},
+	${if_match $unseen_mails > 0} {"full_text": " $unseen_mails"}, ${endif}
+{"full_text": ${if_empty ${exec cat /sys/class/power_supply/AC/online | grep 1}}
+		${if_match $battery_percent > 75} " ${battery_percent}%", "color":"\#00ff00" $else
+		${if_match $battery_percent > 50} " ${battery_percent}%", "color":"\#88bb00" $else
+		${if_match $battery_percent > 25} " ${battery_percent}%", "color":"\#ffbb00" $else
+		                                  " ${battery_percent}%", "color":"\#ff0000"
+		$endif
+		$endif
+		$endif
+	$else "${template0 $battery_percent}" $endif },
+{"full_text": "${hwmon 1 temp 1}°C", "color":"\#8844ee"},
+{"full_text": "${cpubar cpu0} ${cpu cpu0}%", "min_width":100, "color":
+	${if_match ${cpu cpu0} > 80 } "\#ff0000" $else ${if_match ${cpu cpu0} > 50} "\#ff4444" $else "\#00ff00" $endif $endif
+},
+{"full_text": "${execbar getvolume} ${exec getvolume}% \
+${if_empty ${exec amixer get Master | grep -E '\[off\]'}}","color":"\#ffffff"${else} ","color":"\#ffff00"${endif}, "min_width":100},
+{"full_text": "${execi 300 mtemp}°C"},
+{"full_text": "${time  %d/%m/%Y  %H:%M}"}],
+]]
