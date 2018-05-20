@@ -30,6 +30,6 @@ source $HOME/.config/shell/aliases
 # less
 export LESS='-i -R'
 export LESSHISTFILE=/dev/null
-which calcurse >/dev/null
+where -p calcurse >/dev/null
 [[ $? -eq 0 && -z $TMUX && -o login ]] && calcurse -r14
 #[[ -z $TMUX && -o login ]] && update_ip &
