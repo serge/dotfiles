@@ -12,3 +12,5 @@ export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 # elinks
 export ELINKS_CONFDIR="$HOME"/.config/elinks
+# vim
+export VIMINIT="source $HOME/.config/vim/vimrc"

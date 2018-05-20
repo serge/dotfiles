@@ -1,0 +1,177 @@
+" this section deals with keeping vim directory in a non standard path
+" packpath and runtimepath are set here so vim can load default plugins
+" and find syntax and colors
+" g:MYOWNVIMRC is a substitute for MYVIMRC variable which is not 
+" initialised due to VIMINIT variable being set
+set packpath=$HOME/.config/vim,$VIMRUNTIME,$HOME/.config/vim/after
+set runtimepath=$HOME/.config/vim,$VIMRUNTIME,$HOME/.config/vim/after
+let g:MYOWNVIMRC = expand('<sfile>')
+" end of non standard vim directory hack
+
+syntax enable
+
+colorscheme badwolf
+set background=dark
+
+set virtualedit=all
+
+set history=100
+set encoding=utf-8
+"set backspace=indent,eol,start
+set autochdir
+set ruler
+
+" Search
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" set list
+set expandtab
+set shiftwidth=3
+"set shiftround
+set smarttab
+" No noise
+set visualbell
+set noerrorbells
+
+set nocompatible
+set relativenumber
+set undofile
+
+" wildmenu
+set wildmenu
+set wildmode=longest,list
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+else
+    set wildignore+=.git\*,.hg\*,.svn\*
+endif
+
+
+" A buffer becomes hidden when it is abandoned
+set hid
+
+" For regular expressions turn magic on
+set magic
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+
+filetype off
+" execute pathogen#infect()
+filetype plugin indent on
+
+" tags search order
+set tags=./tags;,tags;
+" filetype
+
+" Format the status line
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+runtime ftplugin/man.vim
+
+" status
+set laststatus=2
+
+" leader
+let mapleader=" "
+nnoremap <leader>fr :set spelllang=fr<CR>:set spell<CR>
+nnoremap <leader>en :set spelllang=en<CR>:set spell<CR>
+nnoremap <leader>es :set spelllang=es<CR>:set spell<CR>
+nnoremap <leader>ru :set spelllang=ru<CR>:set spell<CR>
+
+" spell
+nnoremap <leader>nn ]sz=
+nnoremap <leader>pp [sz=
+" edit vimrc/zshrc and load vimrc bindings
+nnoremap <leader>ev :execute "vsp ".g:MYOWNVIMRC<CR>
+nnoremap <leader>ez :vsp ~/.config/zsh/.zshrc<CR>
+nnoremap <leader>sv :execute "source ".g:MYOWNVIMRC<CR>
+
+" save session
+nnoremap <leader>s :mksession<CR>
+
+" put quotes around a word
+nnoremap <leader>" wi"<Esc>bi"<Esc>
+
+" clipboard
+nnoremap <leader>v            "+P
+nnoremap <leader>i            "+y
+" Bash like keys for the command line
+cnoremap <C-A>                <Home>
+cnoremap <C-E>                <End>
+cnoremap <C-K>                <C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><space> :noh<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Close all the buffers
+map <leader>ba :1,1000 bd!<cr>
+
+nnoremap <leader>\ :vsp<CR>
+" Fast saving
+nmap <leader>w :w!<cr>
+nmap <leader>x :xall<cr>
+
+" make backups in a single cetral place 
+" ending in double backslash makes name of temp files include path
+set backupdir=~/.cache/vim/backups//
+set undodir=~/.cache/vim/backups//
+set directory=~/.cache/vim/backups//
+set viminfo+=n~/.cache/vim/viminfo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" move to first character
+nnoremap <leader>0 1000h
+" Remap VIM 0 to first non-blank character
+map 0 ^
+imap jk <Esc>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let python_highlight_all=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" markdown
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
+set nofoldenable
