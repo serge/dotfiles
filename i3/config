@@ -26,8 +26,7 @@ set $VOLUME_UP                 exec --no-startup-id "amixer set 'Master' -q 5%+"
 set $KILL_MPLAYER              exec --no-startup-id "pkill mplayer"
 
 set $CHECK_EMAILS              exec --no-startup-id ~/bin/mailnotify.sh
-set $SHOW_TIME_AROUND_THE_WORLD exec --no-startup-id ~/bin/melbourne.sh
-set $AUTOSTART                 exec --no-startup-id $I3ROOT/autostart
+set $SHOW_TIME_AROUND_THE_WORLD exec --no-startup-id ~/bin/friendlytimes
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -268,4 +267,4 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-$AUTOSTART
+exec --no-startup-id $I3ROOT/autostart
